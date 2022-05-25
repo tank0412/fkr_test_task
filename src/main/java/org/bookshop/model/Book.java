@@ -1,12 +1,15 @@
 package org.bookshop.model;
 
 
-//import javax.persistence.*;
+import javax.persistence.*;
 
-//@Entity
-//@Table(name = "book")
+@Entity
+@Table(name = "book")
 public class Book {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    public Book() {}
 }
