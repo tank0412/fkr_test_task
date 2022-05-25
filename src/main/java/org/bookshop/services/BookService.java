@@ -16,14 +16,18 @@ public class BookService {
     private BookRepository bookRepository;
 
     public List<BookDto> getAllBooks() {
-        return bookRepository.findAll().stream().map(b -> new BookDto(b.getId(), b.getBookType(), b.getAuthors())).collect(Collectors.toList());
+        return bookRepository.findAll().stream().map(this::bookToBookDto).collect(Collectors.toList());
     }
 
     public List<BookDto> getAllBooksByAuthor(Set<Long> authorId) {
-        return bookRepository.findAllByAuthors(authorId).stream().map(b -> new BookDto(b.getId(), b.getBookType(), b.getAuthors())).collect(Collectors.toList());
+        return bookRepository.findAllByAuthors(authorId).stream().map(this::bookToBookDto).collect(Collectors.toList());
     }
 
     public List<Book> getAllBooksFull() {
         return bookRepository.findAll();
+    }
+
+    private BookDto bookToBookDto(Book b) {
+        return new BookDto(b.getId(), b.getBookType(), b.getAuthors());
     }
 }
