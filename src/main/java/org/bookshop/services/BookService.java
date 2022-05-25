@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +17,10 @@ public class BookService {
 
     public List<BookDto> getAllBooks() {
         return bookRepository.findAll().stream().map(b -> new BookDto(b.getId(), b.getBookType(), b.getAuthors())).collect(Collectors.toList());
+    }
+
+    public List<BookDto> getAllBooksByAuthor(Set<Long> authorId) {
+        return bookRepository.findAllByAuthors(authorId).stream().map(b -> new BookDto(b.getId(), b.getBookType(), b.getAuthors())).collect(Collectors.toList());
     }
 
     public List<Book> getAllBooksFull() {
