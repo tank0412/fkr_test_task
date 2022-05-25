@@ -14,13 +14,10 @@
     ">
 
     <mvc:annotation-driven />
-    <context:component-scan
-            base-package="org.bookshop.controller" />
+    <context:component-scan base-package="org.bookshop" />
     <mvc:default-servlet-handler />
 
-    <bean id="bookController" class="org.bookshop.controller.BookController">
-<!--        <constructor-arg index="0" value=""></constructor-arg>-->
-    </bean>
+    <bean id="bookController" class="org.bookshop.controller.BookController"/>
     <bean id="bookService" class="org.bookshop.services.BookService"/>
     <jpa:repositories base-package="org.bookshop.repositories" />
 

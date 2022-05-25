@@ -4,7 +4,6 @@ import org.bookshop.model.Book;
 import org.bookshop.model.dto.BookDto;
 import org.bookshop.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;

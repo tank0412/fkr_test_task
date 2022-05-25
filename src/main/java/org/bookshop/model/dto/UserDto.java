@@ -1,16 +1,21 @@
-package org.bookshop.model;
+package org.bookshop.model.dto;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserDto {
+    public UserDto(Long id, String login, Integer discount) {
+        this.id = id;
+        this.login = login;
+        this.discount = discount;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String login;
-    private char[] password;
+
     private Integer discount;
 
     public Long getId() {
@@ -27,14 +32,6 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
-    }
-
-    public char[] getPassword() {
-        return password;
-    }
-
-    public void setPassword(char[] password) {
-        this.password = password;
     }
 
     public Integer getDiscount() {
