@@ -12,6 +12,7 @@ public class Author {
     private Long id;
     private String name;
     private String surname;
+    private String middleName;
 
     public Long getId() {
         return id;
@@ -35,6 +36,14 @@ public class Author {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
 
