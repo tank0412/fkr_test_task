@@ -1,6 +1,7 @@
 package org.bookshop.controller;
 
 import org.bookshop.model.Book;
+import org.bookshop.model.dto.BookDto;
 import org.bookshop.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,13 @@ public class BookController {
 
     @ResponseBody
     @GetMapping("/books")
-    public List<Book> allBooks() {
+    public List<BookDto> allBooks() {
         return bookService.getAllBooks();
+    }
+
+    @ResponseBody
+    @GetMapping("/books_full")
+    public List<Book> allBooksFull() {
+        return bookService.getAllBooksFull();
     }
 }
