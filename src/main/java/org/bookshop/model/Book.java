@@ -8,20 +8,24 @@ import java.util.Set;
 @Entity
 @Table(name = "book")
 public class Book {
-    public Book() {}
+    public Book() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String title;
     @Column(name = "type")
     private BookType bookType;
-    private Integer price;
-    private Integer originalPrice;
-    @ManyToMany(cascade = { CascadeType.ALL })
+    private Float price;
+    private Float originalPrice;
+
+
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(
             name = "book_author",
-            joinColumns = { @JoinColumn(name = "author_id") },
-            inverseJoinColumns = { @JoinColumn(name = "book_id") }
+            joinColumns = {@JoinColumn(name = "author_id")},
+            inverseJoinColumns = {@JoinColumn(name = "book_id")}
     )
     Set<Author> authors = new HashSet<>();
 
@@ -33,6 +37,14 @@ public class Book {
         this.id = id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public BookType getBookType() {
         return bookType;
     }
@@ -41,19 +53,19 @@ public class Book {
         this.bookType = bookType;
     }
 
-    public Integer getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public Integer getOriginalPrice() {
+    public Float getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(Integer originalPrice) {
+    public void setOriginalPrice(Float originalPrice) {
         this.originalPrice = originalPrice;
     }
 
