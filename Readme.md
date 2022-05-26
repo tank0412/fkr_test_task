@@ -9,4 +9,7 @@
 
 To run flyway migration: clean flyway:migrate -Dflyway.configFiles=flywayConfig.properties 
 
-To run application: install tomcat7:run
+To run application:
++ Set environmental variables: db.username=postgres;db.password=postgres
++ install tomcat7:run
+
