@@ -3,6 +3,7 @@ package org.bookshop.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,8 @@ public class Book {
     private Float price;
     private Float originalPrice;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Order> orders;
 
     @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(

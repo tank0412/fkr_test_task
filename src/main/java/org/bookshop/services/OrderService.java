@@ -1,0 +1,33 @@
+package org.bookshop.services;
+
+import org.bookshop.model.Book;
+import org.bookshop.model.Order;
+import org.bookshop.model.User;
+import org.bookshop.repositories.BookRepository;
+import org.bookshop.repositories.OrderRepository;
+import org.bookshop.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class OrderService {
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private BookRepository bookRepository;
+
+    public Order createNewOrder(Long bookId, Integer amount, String login, char[] pw) {
+        User user = userRepository.findByLoginAndPassword(login, pw);
+        Book book = bookRepository.getOne(bookId);
+        if(user != null && book != null) {
+            Order order = new Order(book, amount, user);
+            return orderRepository.saveAndFlush(order);
+        }
+        else {
+            return null;
+        }
+    }
+
+}

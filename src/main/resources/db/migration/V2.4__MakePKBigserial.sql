@@ -1,0 +1,1 @@
+ALTER TABLE Orders drop column id, add column id bigserial;
