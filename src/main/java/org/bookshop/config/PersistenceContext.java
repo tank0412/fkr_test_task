@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource(value= {"classpath:application.properties"})
+@PropertySource(value = {"classpath:application.properties"})
 @ImportResource({"classpath:app-context.xml"})
 @EnableJpaRepositories(basePackages = {
         "org.bookshop.repositories",
@@ -81,19 +81,19 @@ public class PersistenceContext {
         //Configures the naming strategy that is used when Hibernate creates
         //new database objects and schema elements
         jpaProperties.put("hibernate.ejb.naming_strategy",
-               hibNamingStrategy
+                hibNamingStrategy
         );
 
         //If the value of this property is true, Hibernate writes all SQL
         //statements to the console.
         jpaProperties.put("hibernate.show_sql",
-               hibShowSql
+                hibShowSql
         );
 
         //If the value of this property is true, Hibernate will format the SQL
         //that is written to the console.
         jpaProperties.put("hibernate.format_sql",
-               hibFormatSql
+                hibFormatSql
         );
 
         entityManagerFactoryBean.setJpaProperties(jpaProperties);

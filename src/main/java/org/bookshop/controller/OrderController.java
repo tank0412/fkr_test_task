@@ -24,14 +24,12 @@ public class OrderController {
      *
      * @return created order
      */
-    @ResponseBody
     @PostMapping(path = "/order", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Order> newOrder(@RequestBody OrderSend orderSend) {
         Order order = orderService.createNewOrder(orderSend.getBookId(), orderSend.getAmount(), orderSend.getLogin(), orderSend.getPw());
-        if(order != null) {
-            return new ResponseEntity<>(order,HttpStatus.OK);
-        }
-        else {
+        if (order != null) {
+            return new ResponseEntity<>(order, HttpStatus.OK);
+        } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

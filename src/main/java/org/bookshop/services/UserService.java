@@ -20,6 +20,6 @@ public class UserService {
     }
 
     private UserDto userToUserDto(User u) {
-        return new UserDto(u.getId(),u.getLogin(), u.getDiscount());
+        return new UserDto(u.getId(), u.getLogin(), u.getDiscount());
     }
 }

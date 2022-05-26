@@ -19,7 +19,6 @@ public class UserController {
      *
      * @return list of users which discount is more than 2 (hardcoded)
      */
-    @ResponseBody
     @GetMapping("/users")
     public List<UserDto> allUsers() {
         return userService.getAllUsersWhereDiscountMoreThan2();

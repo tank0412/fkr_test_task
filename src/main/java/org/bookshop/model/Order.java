@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Orders")
 public class Order {
-    public Order() {}
+    public Order() {
+    }
 
     public Order(Book book, Integer amount, User user) {
         this.book = book;

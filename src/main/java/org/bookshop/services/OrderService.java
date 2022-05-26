@@ -24,11 +24,10 @@ public class OrderService {
     public Order createNewOrder(Long bookId, Integer amount, String login, char[] pw) {
         User user = userRepository.findByLoginAndPassword(login, pw);
         Book book = bookRepository.getOne(bookId);
-        if(user != null && book != null) {
+        if (user != null && book != null) {
             Order order = new Order(book, amount, user);
             return orderRepository.saveAndFlush(order);
-        }
-        else {
+        } else {
             return null;
         }
     }
