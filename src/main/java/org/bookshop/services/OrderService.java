@@ -9,6 +9,8 @@ import org.bookshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class OrderService {
     @Autowired
@@ -18,6 +20,7 @@ public class OrderService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Transactional
     public Order createNewOrder(Long bookId, Integer amount, String login, char[] pw) {
         User user = userRepository.findByLoginAndPassword(login, pw);
         Book book = bookRepository.getOne(bookId);
