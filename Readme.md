@@ -1,4 +1,5 @@
 # Test task for FKR
+## For API documentation, go to org.bookshop.controller
 ### Project stack
 * Java 8
 * Spring 4

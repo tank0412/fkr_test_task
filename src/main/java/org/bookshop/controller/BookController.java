@@ -17,12 +17,21 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    /**
+     *
+     * @return "IT WORKS" to test if it works
+     */
     @ResponseBody
     @GetMapping("/")
     public String root() {
         return "IT WORKS";
     }
 
+    /**
+     *
+     * @param authorId - will be used for filtration
+     * @return List of all books (in dto) or list of books filtered by author
+     */
     @ResponseBody
     @GetMapping("/books")
     public List<BookDto> allBooks(@RequestParam(value = "authorId", required = false) Set<Long> authorId) {
@@ -34,6 +43,10 @@ public class BookController {
         }
     }
 
+    /**
+     *
+     * @return List of all books with all fields
+     */
     @ResponseBody
     @GetMapping("/books_full")
     public List<Book> allBooksFull() {

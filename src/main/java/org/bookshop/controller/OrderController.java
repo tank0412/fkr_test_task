@@ -14,6 +14,16 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     *
+     * @param orderSend - consists of following fields:
+     * bookId - id of book
+     * amount - number of books which will be bought
+     * login - login of user
+     * pw - user password (not encrypted)
+     *
+     * @return created order
+     */
     @ResponseBody
     @PostMapping(path = "/order", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Order> newOrder(@RequestBody OrderSend orderSend) {
