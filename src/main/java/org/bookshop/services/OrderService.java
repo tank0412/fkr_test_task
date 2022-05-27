@@ -25,7 +25,9 @@ public class OrderService {
         User user = userRepository.findByLoginAndPassword(login, pw);
         Book book = bookRepository.getOne(bookId);
         if (user != null && book != null) {
-            Order order = new Order(book, amount, user);
+            Float price = book.getPrice();
+            Float orderTotal = (price * amount) - (price * (user.getDiscount() / 100F));
+            Order order = new Order(book, amount, orderTotal, user);
             return orderRepository.saveAndFlush(order);
         } else {
             return null;

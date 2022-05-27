@@ -8,9 +8,10 @@ public class Order {
     public Order() {
     }
 
-    public Order(Book book, Integer amount, User user) {
+    public Order(Book book, Integer amount, Float orderTotal, User user) {
         this.book = book;
         this.amount = amount;
+        this.orderTotal = orderTotal;
         this.user = user;
     }
 
@@ -23,6 +24,8 @@ public class Order {
     private Book book;
 
     private Integer amount;
+
+    private Float orderTotal;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
@@ -50,6 +53,14 @@ public class Order {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Float getOrderTotal() {
+        return orderTotal;
+    }
+
+    public void setOrderTotal(Float orderTotal) {
+        this.orderTotal = orderTotal;
     }
 
     public User getUser() {
