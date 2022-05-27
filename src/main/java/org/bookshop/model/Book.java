@@ -1,7 +1,6 @@
 package org.bookshop.model;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import javax.persistence.*;

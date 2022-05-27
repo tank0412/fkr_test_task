@@ -23,7 +23,7 @@ public class OrderService {
     @Transactional
     public Order createNewOrder(Long bookId, Integer amount, String login, char[] pw) {
         User user = userRepository.findByLoginAndPassword(login, pw);
-        Book book = bookRepository.getOne(bookId);
+        Book book = bookRepository.findOne(bookId);
         if (user != null && book != null) {
             Float price = book.getPrice();
             float sum = price * amount;
