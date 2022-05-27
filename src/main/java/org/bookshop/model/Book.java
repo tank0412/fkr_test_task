@@ -1,6 +1,9 @@
 package org.bookshop.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
@@ -81,6 +84,16 @@ public class Book {
     }
 
     public enum BookType {
-        BOOK, JOURNAL
+        BOOK ("Книга"), JOURNAL ("Журнал");
+
+        BookType(String type) {
+            this.type = type;
+        }
+        private final String type;
+
+        @JsonValue
+        public String getType() {
+            return type;
+        }
     }
 }
