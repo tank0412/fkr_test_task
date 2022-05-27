@@ -20,7 +20,7 @@ public class BookService {
     }
 
     public List<BookDto> getAllBooksByAuthor(Set<Long> authorId) {
-        return bookRepository.findByAuthors_Id(authorId).stream().map(this::bookToBookDto).collect(Collectors.toList());
+        return bookRepository.findByAuthors_IdIn(authorId).stream().map(this::bookToBookDto).collect(Collectors.toList());
     }
 
     public List<Book> getAllBooksFull() {

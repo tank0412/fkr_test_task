@@ -11,6 +11,6 @@ import java.util.Set;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    List<Book> findByAuthors_Id(@Param("author_id") Set<Long> authorId);
+    List<Book> findByAuthors_IdIn(@Param("author_id") Set<Long> authorId);
 
 }

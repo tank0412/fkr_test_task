@@ -4,6 +4,8 @@ import org.bookshop.model.Book;
 import org.bookshop.model.dto.BookDto;
 import org.bookshop.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,11 +33,11 @@ public class BookController {
      * @return List of all books (in dto) or list of books filtered by author
      */
     @GetMapping("/books")
-    public List<BookDto> allBooks(@RequestParam(value = "authorId", required = false) Set<Long> authorId) {
+    public ResponseEntity<List<BookDto>> allBooks(@RequestParam(value = "authorId", required = false) Set<Long> authorId) {
         if (authorId == null) {
-            return bookService.getAllBooks();
+            return new ResponseEntity<>(bookService.getAllBooks(), HttpStatus.OK);
         } else {
-            return bookService.getAllBooksByAuthor(authorId);
+            return new ResponseEntity<>(bookService.getAllBooksByAuthor(authorId), HttpStatus.OK);
         }
     }
 
