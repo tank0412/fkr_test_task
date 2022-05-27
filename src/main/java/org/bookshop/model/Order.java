@@ -1,6 +1,7 @@
 package org.bookshop.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "Orders")
@@ -8,7 +9,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(Book book, Integer amount, Float orderTotal, User user) {
+    public Order(Book book, Integer amount, BigDecimal orderTotal, User user) {
         this.book = book;
         this.amount = amount;
         this.orderTotal = orderTotal;
@@ -25,7 +26,7 @@ public class Order {
 
     private Integer amount;
 
-    private Float orderTotal;
+    private BigDecimal orderTotal;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
@@ -55,11 +56,11 @@ public class Order {
         this.amount = amount;
     }
 
-    public Float getOrderTotal() {
+    public BigDecimal getOrderTotal() {
         return orderTotal;
     }
 
-    public void setOrderTotal(Float orderTotal) {
+    public void setOrderTotal(BigDecimal orderTotal) {
         this.orderTotal = orderTotal;
     }
 

@@ -4,6 +4,7 @@ package org.bookshop.model;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,8 +21,8 @@ public class Book {
     private String title;
     @Column(name = "type")
     private BookType bookType;
-    private Float price;
-    private Float originalPrice;
+    private BigDecimal price;
+    private BigDecimal originalPrice;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Order> orders;
@@ -58,19 +59,19 @@ public class Book {
         this.bookType = bookType;
     }
 
-    public Float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Float getOriginalPrice() {
+    public BigDecimal getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(Float originalPrice) {
+    public void setOriginalPrice(BigDecimal originalPrice) {
         this.originalPrice = originalPrice;
     }
 

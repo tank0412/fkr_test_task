@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Service
 public class OrderService {
@@ -25,9 +27,11 @@ public class OrderService {
         User user = userRepository.findByLoginAndPassword(login, pw);
         Book book = bookRepository.findOne(bookId);
         if (user != null && book != null) {
-            Float price = book.getPrice();
-            float sum = price * amount;
-            Float orderTotal = sum - (sum * (user.getDiscount() / 100F));
+            BigDecimal price = book.getPrice();
+            BigDecimal sum = price .multiply(BigDecimal.valueOf(amount));
+            double userDiscount = user.getDiscount() / 100D;
+            BigDecimal orderTotal = sum.subtract((sum.multiply(BigDecimal.valueOf(userDiscount))));
+            orderTotal = orderTotal.setScale(2, RoundingMode.HALF_EVEN);
             Order order = new Order(book, amount, orderTotal, user);
             return orderRepository.saveAndFlush(order);
         } else {
